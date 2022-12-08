@@ -4,9 +4,9 @@ from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, message
+import tokens
 
-
-bot = Bot(token='5846315074:AAELrKqMN5oLlhxwUHqGlPfDmfQjuar-Mms')
+bot = Bot(tokens.token_tg)
 dp = Dispatcher(bot)
 
 
@@ -24,7 +24,7 @@ async def start_command(message: types.Message):
 
 
 def get_weather(message: types.Message):
-    OpenWeather_token = "e0a3a76a053eae2619ebec4c4acb1951"
+
     code_to_smile = {
         "Clear": "Ясно \U00002600",
         "Clouds": "Облачно \U00002601",
@@ -36,7 +36,7 @@ def get_weather(message: types.Message):
     }
 
     r = requests.get(
-            f"http://api.openweathermap.org/data/2.5/weather?q={message}&appid={OpenWeather_token}&units=metric"
+            f"http://api.openweathermap.org/data/2.5/weather?q={message}&appid={tokens.OpenWeather_token}&units=metric"
         )
     data = r.json()
 
